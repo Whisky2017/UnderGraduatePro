@@ -1,0 +1,28 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: client - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\mcy\LOCALS~1\Temp\RSP5D.tmp" with contents
+[
+ssleay32.lib libeay32.lib wsock32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/client.pdb" /debug /machine:I386 /out:"Debug/client.exe" /pdbtype:sept 
+".\Debug\client.obj"
+".\Debug\clientDlg.obj"
+".\Debug\IP.obj"
+".\Debug\StdAfx.obj"
+".\Debug\client.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\mcy\LOCALS~1\Temp\RSP5D.tmp"
+<h3>Output Window</h3>
+Linking...
+
+
+
+<h3>Results</h3>
+client.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

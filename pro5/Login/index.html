@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8" />
+	<title>Login and Registration</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h1>Login and Registration Form to Carrot2 Clustering Engine!</h1>
+		</header>
+		<section>
+			<div id="container_demo">
+				<a class="hiddenanchor" id="toregister"></a>
+				<a class="hiddenanchor" id="tologin"></a>
+				<div id="wrapper">
+					<div id="login" class="animate form">
+						<form name="login_form" onsubmit="return load();">
+							<h1>Log in</h1>
+							<p>
+								<label for="username" class="uname"data-icon="u">
+									Your Username
+								</label>
+								<input id="username" name="username" required="
+								required" type="text" placeholder="myusername"></input>
+							</p>
+							<p>
+								<label for="password" class="youpasswd"data-icon="p">
+									Your password
+								</label>
+								<input id="password" name="password" required="
+								required" type="password" placeholder="eg. X8DFdfs90">
+								</input>
+							</p>
+							<p class="keeplogin">
+							<input type="checkbox" name="loginkeeping" id="loginkeeping"
+							value="loginkeeping"></input>
+							<label for="loginkeeping">Keep me logged in</label>	
+							</p>
+							<p class="login button">
+								<input type="submit" value="Login" onclick="load();"></input>
+							</p>
+							<p class="change_link">
+									Not a member yet ?
+									<a href="#toregister" class="to_register">Join us</a>
+								</p>
+						</form>
+					</div>
+					
+					<script type="text/javascript">
+						function load(){
+							/*
+							$.ajax({
+								data : {
+									uname : $('#login input[name=username]').val(),
+									pname : $('#login input[name=password]').val()
+								},
+								dataType : 'json',
+								success : function(data){
+									if(data.msg == "")
+										alert("用户名或密码错误！");
+								},
+								error : fnction(){
+									alert("系统错误！");
+								}
+							});*/
+							var uname = document.getElementById('username').value,	
+								pname = document.getElementById('password').value;
+							if(window.localStorage){
+								if(uname==localStorage.getItem('uname')){
+									if(pname==localStorage.getItem('pname'))
+									{
+										//document.location.href = 'https://localhost:8443/carrot2-webapp-3.12.0/search';
+										window.open('https://localhost:8443/carrot2-webapp-3.12.0/search','_self');
+										return false;
+									}
+									else
+										alert("密码错误！");
+								}
+								else
+									alert("用户不存在！");
+							}
+						}
+						
+						
+					</script>
+
+					<div id="register" class="animate form">
+						<form name="register_form" onsubmit="return save();"> 
+                                <h1> Sign up </h1> 
+                                <p> 
+                                    <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+                                    <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" />
+                                </p>
+                                <p> 
+                                    <label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
+                                    <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com"/> 
+                                </p>
+                                <p> 
+                                    <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+                                    <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO"/>
+                                </p>
+                                <p> 
+                                    <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
+                                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
+                                </p>
+                                <p class="signin button"> 
+									<input type="submit" value="Sign up" onclick="save();" /> 
+								</p>
+                                <p class="change_link">  
+									Already a member ?
+									<a href="#tologin" class="to_register"> Go and log in </a>
+								</p>
+                            </form>
+					</div>
+					<script type="text/javascript">
+						function save(){
+							var uname = document.getElementById('usernamesignup').value,
+								ename = document.getElementById('emailsignup').value,
+								pname = document.getElementById('passwordsignup').value,
+								pname_confirm = document.getElementById('passwordsignup_confirm').value;
+								if(pname!=pname_confirm){
+									alert("两次输入的密码不一致，请重新输入！");
+								}
+								else {
+									localStorage.setItem('uname',uname);
+									localStorage.setItem('ename',ename);
+									localStorage.setItem('pname',pname);
+									document.location.href = 'https://localhost:8443/carrot2-webapp-3.12.0/search';
+									return false;
+									}
+								}
+					</script>
+				</div>
+				
+			</div>
+		</section>
+	</div>
+</body>
+</html>
